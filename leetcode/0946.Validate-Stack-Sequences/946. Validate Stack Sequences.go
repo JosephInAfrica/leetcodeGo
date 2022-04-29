@@ -11,3 +11,6 @@ func validateStackSequences(pushed []int, popped []int) bool {
 	}
 	return j == N
 }
+
+
+

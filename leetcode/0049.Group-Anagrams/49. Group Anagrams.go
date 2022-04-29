@@ -30,3 +30,20 @@ func groupAnagrams(strs []string) [][]string {
 	}
 	return res
 }
+
+func groupAnagrams1(strs []string) [][]string {
+	record, res := make(map[string][]string, 0), [][]string{}
+	for _, str := range strs {
+		sByte := []rune(str)
+		sort.Sort(sortRunes(sByte))
+		if _, ok := record[str]; !ok {
+			record[str] = []string{}
+		}
+		record[str] = append(record[str], str)
+	}
+	
+	for _, v := range record {
+		res = append(res, v)
+	}
+	return res
+}

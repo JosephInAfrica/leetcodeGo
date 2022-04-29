@@ -35,6 +35,10 @@ func Test_Problem946(t *testing.T) {
 			para946{[]int{1, 2, 3, 4, 5}, []int{4, 3, 5, 1, 2}},
 			ans946{false},
 		},
+		{
+			para946{[]int{1, 2, 3, 4, 5}, []int{4, 5, 3, 2, 1}},
+			ans946{true},
+		},
 
 		{
 			para946{[]int{1, 0}, []int{1, 0}},
@@ -45,8 +49,10 @@ func Test_Problem946(t *testing.T) {
 	fmt.Printf("------------------------Leetcode Problem 946------------------------\n")
 
 	for _, q := range qs {
-		_, p := q.ans946, q.para946
-		fmt.Printf("【input】:%v       【output】:%v\n", p, validateStackSequences(p.one, p.two))
+		var p = q.para946
+		fmt.Printf("【input】:%v       【output】:%v answer:%v\n", p, validateStackSequences(p.one, p.two), q.ans946)
+		fmt.Printf("mine【input】:%v    output】:%v  answer:%v\n", p, validate(p.one, p.two), q.ans946)
+
 	}
 	fmt.Printf("\n\n\n")
 }

@@ -1,5 +1,57 @@
 package leetcode
 
+
+func findSubStringMine(s string, words []string)[]int{
+	// 
+
+	var lenWord=len(words[0])
+	var totalLen=lenWord*len(words)
+
+	var cache=make(map[string]int,len(words))
+	for _,w:=range words{
+		cache[w]=0
+	}
+	
+	var clean=func(c map[string]int){
+		for i:=range c{
+			c[i]=0
+		}
+	}
+
+	func contained=func(w string)bool{
+		n,ok:=cache[w]
+		if !ok{
+			return false
+		}
+		if n!=0{
+			return false 
+		}
+		cache[w]=1
+		return true
+	}
+	
+
+	var wordsInString=func(i int,words []string)bool{
+		if i+totalLen>len(s){
+			return false
+		}
+		
+		if len(words)==0{
+			return true
+		}
+
+		if !contained(s[i:i+lenWord]){
+			return false
+		}
+
+
+		return wordsInString(i+lenWord,)
+	}
+
+
+
+}
+
 func findSubstring(s string, words []string) []int {
 	if len(words) == 0 {
 		return []int{}

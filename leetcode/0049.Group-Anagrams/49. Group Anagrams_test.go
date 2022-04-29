@@ -36,6 +36,7 @@ func Test_Problem49(t *testing.T) {
 	for _, q := range qs {
 		_, p := q.ans49, q.para49
 		fmt.Printf("【input】:%v       【output】:%v\n", p, groupAnagrams(p.one))
+		fmt.Printf("【input】:%v       【output】:%v\n", p, groupAnagrams1(p.one))
 	}
 	fmt.Printf("\n\n\n")
 }

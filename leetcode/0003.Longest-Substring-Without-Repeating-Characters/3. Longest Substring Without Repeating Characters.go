@@ -68,3 +68,29 @@ func max(a int, b int) int {
 	}
 	return b
 }
+
+func MylengthOfLongestSubstring(s string) int {
+	var max = func(a, b int) int {
+		if a > b {
+			return a
+		}
+		return b
+	}
+	var cache = make(map[byte]int)
+	if len(s) == 0 {
+		return 0
+	}
+	var left, right, length = 0, 1, 1
+	cache[s[left]] = 1
+	for left < len(s) && right < len(s) {
+		if cache[s[right]] > 0 {
+			cache[s[left]] -= 1
+			left += 1
+		} else {
+			cache[s[right]] = 1
+			right += 1
+		}
+		length = max(length, right-left)
+	}
+	return length
+}

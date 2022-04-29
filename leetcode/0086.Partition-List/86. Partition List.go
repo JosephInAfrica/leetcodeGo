@@ -15,6 +15,27 @@ type ListNode = structures.ListNode
  * }
  */
 
+func partitionMine(head *ListNode, x int) *ListNode {
+	beforeHead := &ListNode{}
+	before := beforeHead
+	afterHead := &ListNode{}
+	after := afterHead
+
+	for head != nil {
+		if head.Val < x {
+			before.Next = head
+			before = before.Next
+		} else {
+			after.Next = head
+			after = after.Next
+		}
+		head = head.Next
+	}
+	after.Next = nil
+	before.Next = afterHead.Next
+	return beforeHead
+}
+
 // 解法一 单链表
 func partition(head *ListNode, x int) *ListNode {
 	beforeHead := &ListNode{Val: 0, Next: nil}
